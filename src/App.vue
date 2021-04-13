@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <h1>Rockbot Player</h1>
-    <NavBar title="Hello" />
     <div>{{ songs }}</div>
+    <NavBar />
   </div>
 </template>
 
@@ -24,7 +24,8 @@
     mounted() {
       axios
         .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then((response: any) => (this.songs = response));
+        .then((response: any) => (this.songs = response.data.chartName))
+        .catch((error) => console.log(error));
     },
   });
 </script>
@@ -40,12 +41,11 @@
     font-family: 'Poppins', sans-serif;
   }
   .container {
-    max-width: 500px;
+    max-width: 300px;
     margin: 30px auto;
     overflow: auto;
-    min-height: 300px;
+    min-height: 500px;
     border: 1px solid steelblue;
-    padding: 30px;
     border-radius: 5px;
   }
   .btn {
