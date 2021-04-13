@@ -1,18 +1,30 @@
 <template>
   <div class="container">
     <h1>Rockbot Player</h1>
-    <NavBar />
+    <NavBar title="Hello" />
+    <div>{{ songs }}</div>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
+  import axios from 'axios';
   import NavBar from './components/NavBar.vue';
 
   export default defineComponent({
     name: 'App',
     components: {
       NavBar,
+    },
+    data() {
+      return {
+        songs: null,
+      };
+    },
+    mounted() {
+      axios
+        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .then((response: any) => (this.songs = response));
     },
   });
 </script>
