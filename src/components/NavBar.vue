@@ -1,7 +1,8 @@
 <template>
-  <footer>
-    <h1>{{ title }}</h1>
-  </footer>
+  <div class="navbar">
+    <a href="#">Now Playing</a>
+    <a href="#">Request</a>
+  </div>
 </template>
 
 <script>
@@ -17,10 +18,14 @@
 </script>
 
 <style scoped>
-  footer {
+  .navbar {
+    width: 300px;
+    height: 30px;
+    border-top: 1px solid black;
+    overflow: hidden;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 290px;
   }
 </style>
