@@ -1,7 +1,8 @@
 <template>
-  <div class="container">
-    <h1>Rockbot Player</h1>
-    <div>{{ songs }}</div>
+  <div class="main-container">
+    <Header />
+    <NowPlaying />
+    <!-- <div>{{ songs }}</div> -->
     <NavBar />
   </div>
 </template>
@@ -9,12 +10,16 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import axios from 'axios';
+  import Header from './components/Header.vue';
   import NavBar from './components/NavBar.vue';
+  import NowPlaying from './components/NowPlaying.vue';
 
   export default defineComponent({
     name: 'App',
     components: {
+      Header,
       NavBar,
+      NowPlaying,
     },
     data() {
       return {
@@ -40,13 +45,16 @@
   body {
     font-family: 'Poppins', sans-serif;
   }
-  .container {
+  .main-container {
     max-width: 300px;
     margin: 30px auto;
     overflow: auto;
     min-height: 500px;
     border: 1px solid steelblue;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
   }
   .btn {
     display: inline-block;
