@@ -25,7 +25,12 @@
     overflow: hidden;
     display: flex;
     justify-content: space-around;
-    position: absolute;
-    bottom: 290px;
+    margin-top: 200px;
+    /* position: absolute;
+    bottom: 290px; */
+  }
+  a {
+    color: #4b93eb;
+    text-decoration: none;
   }
 </style>
