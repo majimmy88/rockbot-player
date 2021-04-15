@@ -9,6 +9,7 @@
     "server": "nodemon server/index.js"
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^3.0.0-3",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
