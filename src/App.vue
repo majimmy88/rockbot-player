@@ -1,8 +1,9 @@
 <template>
   <div class="main-container">
     <Header />
-    <NowPlaying />
-    <!-- <div>{{ songs }}</div> -->
+    <div class="page-container">
+      <NowPlaying />
+    </div>
     <NavBar />
   </div>
 </template>
@@ -34,17 +35,14 @@
     font-family: 'Poppins', sans-serif;
   }
   .main-container {
-    max-width: 300px;
-    margin: 30px auto;
+    min-width: 320px;
+  }
+  .page-container {
     overflow: auto;
-    min-height: 500px;
-    border: 1px solid steelblue;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
   }
-  .btn {
+  /* .btn {
     display: inline-block;
     background: #000;
     color: #fff;
@@ -66,5 +64,5 @@
   .btn-block {
     display: block;
     width: 100%;
-  }
+  } */
 </style>
