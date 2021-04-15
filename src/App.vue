@@ -9,7 +9,6 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import axios from 'axios';
   import Header from './components/Header.vue';
   import NavBar from './components/NavBar.vue';
   import NowPlaying from './components/NowPlaying.vue';
@@ -20,17 +19,6 @@
       Header,
       NavBar,
       NowPlaying,
-    },
-    data() {
-      return {
-        songs: null,
-      };
-    },
-    mounted() {
-      axios
-        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then((response: any) => (this.songs = response.data.chartName))
-        .catch((error) => console.log(error));
     },
   });
 </script>
