@@ -13,16 +13,20 @@
         class="song"
         v-for="song in queue"
         v-bind:item="song"
-        v-bind:key="song.song_id"
+        v-bind:key="song.pick_id"
       >
         <div class="artist-info">
           <div class="artist">{{ song.artist }}</div>
           <div class="song-name">{{ song.song }}</div>
         </div>
         <div class="voting-container">
-          <button>Up</button>
+          <button @click="upVote(song.pick_id)" class="btn">
+            <font-awesome-icon icon="thumbs-up" />
+          </button>
           {{ song.likes }}
-          <button>Down</button>
+          <button @click="downVote(song.pick_id)" class="btn">
+            <font-awesome-icon icon="thumbs-down" />
+          </button>
         </div>
       </div>
     </div>
@@ -54,10 +58,22 @@
           this.error = err.message;
         }
       },
+
       cancelAutoUpdate() {
         clearInterval(this.timer);
       },
+
+      upVote(id) {
+        console.log('up vote');
+        console.log(id);
+      },
+
+      downVote(id) {
+        console.log('down vote');
+        console.log(id);
+      },
     },
+
     async created() {
       await this.getSongs();
 
@@ -112,5 +128,12 @@
   .voting-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+  }
+  .btn {
+    padding: 5px;
+    background-color: #ffffff;
+    border: none;
+    color: #4b93eb;
   }
 </style>
