@@ -5,10 +5,10 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello World' });
-});
+const songs = require('./routes/api/songs');
 
-const port = process.env.PORT || 5000;
+app.use('/api/songs', songs);
+
+const port = 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
