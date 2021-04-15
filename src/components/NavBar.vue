@@ -19,16 +19,16 @@
 
 <style scoped>
   .navbar {
-    width: 300px;
+    width: 100%;
     height: 30px;
-    border-top: 1px solid black;
+    border: 1px solid black;
     overflow: hidden;
     display: flex;
     justify-content: space-around;
     /* align-content: center; */
     margin-top: 200px;
-    /* position: absolute;
-    bottom: 290px; */
+    position: fixed;
+    bottom: 0px;
   }
   a {
     color: #4b93eb;
