@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   export default {
     name: 'NavBar',
     props: {
@@ -25,6 +25,7 @@
     overflow: hidden;
     display: flex;
     justify-content: space-around;
+    /* align-content: center; */
     margin-top: 200px;
     /* position: absolute;
     bottom: 290px; */
