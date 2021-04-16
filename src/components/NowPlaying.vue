@@ -34,7 +34,6 @@
 </template>
 
 <script>
-  // import axios from 'axios';
   import SongService from '../services/SongService.js';
 
   export default {
@@ -55,7 +54,7 @@
           this.queue = res.queue;
           console.log(this.queue);
         } catch (err) {
-          this.error = err.message;
+          console.log(err);
         }
       },
 
@@ -63,9 +62,12 @@
         clearInterval(this.timer);
       },
 
-      upVote(id) {
-        console.log('up vote');
-        console.log(id);
+      async upVote(id) {
+        try {
+          await SongService.upVote(id);
+        } catch (err) {
+          console.log(err);
+        }
       },
 
       downVote(id) {
@@ -77,9 +79,9 @@
     async created() {
       await this.getSongs();
 
-      setInterval(() => {
-        this.getSongs();
-      }, 30000);
+      // setInterval(() => {
+      //   this.getSongs();
+      // }, 30000);
     },
     unmounted() {
       this.cancelAutoUpdate();

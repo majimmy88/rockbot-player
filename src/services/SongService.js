@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/songs';
+const url = 'http://localhost:5000/api/songs/';
 
 class SongService {
   //Get Songs
@@ -13,7 +13,21 @@ class SongService {
           resolve(data);
         })
         .catch((err) => {
-          reject(err);
+          console.log(err);
+        });
+    });
+  }
+
+  static upVote(id) {
+    return new Promise((resolve, reject) => {
+      console.log(id);
+      axios
+        .post(url + id)
+        .then(() => {
+          console.log(`Data is sent to express`);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     });
   }

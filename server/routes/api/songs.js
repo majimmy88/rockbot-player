@@ -18,6 +18,21 @@ router.get('/', async (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-//Update songs
+// Update songs
 
+router.post('/:id', async (req, res) => {
+  //update votes
+  const id = req.params.id;
+  console.log(id);
+  await axios
+    .post('https://api.rockbot.com/v3/engage/vote_up', `pick_id=${id}`, {
+      headers: { Authorization: '2ab742c917f872aa88644bc8f995e03159b2' },
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 module.exports = router;
