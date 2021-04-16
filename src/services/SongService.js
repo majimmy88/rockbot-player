@@ -3,7 +3,7 @@ import axios from 'axios';
 const url = 'http://localhost:5000/api/songs/';
 
 class SongService {
-  //Get Songs
+  //Get Songs from server
   static getSongs() {
     return new Promise((resolve, reject) => {
       axios
@@ -18,11 +18,11 @@ class SongService {
     });
   }
 
-  static upVote(id) {
+  static vote(id, data) {
+    //Sends vote post request to server
     return new Promise((resolve, reject) => {
-      console.log(id);
       axios
-        .post(url + id)
+        .post(url + id, data)
         .then(() => {
           console.log(`Data is sent to express`);
         })

@@ -20,11 +20,11 @@
           <div class="song-name">{{ song.song }}</div>
         </div>
         <div class="voting-container">
-          <button @click="upVote(song.pick_id)" class="btn">
+          <button @click="vote(song.pick_id, 'up')" class="btn">
             <font-awesome-icon icon="thumbs-up" />
           </button>
           {{ song.likes }}
-          <button @click="downVote(song.pick_id)" class="btn">
+          <button @click="vote(song.pick_id, 'down')" class="btn">
             <font-awesome-icon icon="thumbs-down" />
           </button>
         </div>
@@ -47,12 +47,13 @@
 
     methods: {
       async getSongs() {
+        //Gets now playing and queue from rockbot api
         try {
           const res = await SongService.getSongs();
           this.nowPlaying = res.now_playing;
-          console.log(this.nowPlaying.song);
+          // console.log(this.nowPlaying.song);
           this.queue = res.queue;
-          console.log(this.queue);
+          // console.log(this.queue);
         } catch (err) {
           console.log(err);
         }
@@ -62,28 +63,30 @@
         clearInterval(this.timer);
       },
 
-      async upVote(id) {
+      async vote(id, direction) {
+        //Voting for both up and down
+        //API only allows one vote for up or down
+        const data = {
+          direction: direction,
+        };
+
         try {
-          await SongService.upVote(id);
+          await SongService.vote(id, data);
         } catch (err) {
           console.log(err);
         }
-      },
-
-      downVote(id) {
-        console.log('down vote');
-        console.log(id);
       },
     },
 
     async created() {
       await this.getSongs();
-
-      // setInterval(() => {
-      //   this.getSongs();
-      // }, 30000);
+      setInterval(() => {
+        //Gets song data every 30 seconds
+        this.getSongs();
+      }, 30000);
     },
     unmounted() {
+      //Clears setInterval when component is unmounted
       this.cancelAutoUpdate();
     },
   };

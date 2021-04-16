@@ -23,11 +23,18 @@ router.get('/', async (req, res) => {
 router.post('/:id', async (req, res) => {
   //update votes
   const id = req.params.id;
-  console.log(id);
+  // console.log(id);
+  const direction = req.body.direction;
+  // console.log(direction);
+
   await axios
-    .post('https://api.rockbot.com/v3/engage/vote_up', `pick_id=${id}`, {
-      headers: { Authorization: '2ab742c917f872aa88644bc8f995e03159b2' },
-    })
+    .post(
+      `https://api.rockbot.com/v3/engage/vote_${direction}`,
+      `pick_id=${id}`,
+      {
+        headers: { Authorization: '2ab742c917f872aa88644bc8f995e03159b2' },
+      }
+    )
     .then((response) => {
       console.log(response);
     })
