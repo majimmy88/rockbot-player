@@ -17,6 +17,21 @@ class ArtistService {
         });
     });
   }
+
+  static searchArtists(query) {
+    console.log(query);
+    return new Promise((resolve, reject) => {
+      axios
+        .get(url + 'search', { params: query })
+        .then((res) => {
+          const data = res.data.response.slice(0, 10);
+          resolve(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  }
 }
 
 export default ArtistService;

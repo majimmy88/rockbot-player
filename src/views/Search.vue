@@ -11,7 +11,9 @@
         <img v-bind:src="artist.artwork_small" alt="artwork small" />
       </div>
     </div>
-    <div class="search"></div>
+    <div class="search">
+      <input type="text" v-model="query" placeholder="Search Artists" />
+    </div>
   </div>
 </template>
 
@@ -23,6 +25,7 @@
     data() {
       return {
         artists: [],
+        query: '',
       };
     },
 
@@ -37,9 +40,26 @@
           console.log(err);
         }
       },
+
+      async searchArtists() {
+        //Searchs artists based on search input
+        // console.log(this.query);
+        const data = {
+          query: this.query,
+        };
+        try {
+          const res = await ArtistService.searchArtists(data);
+          console.log(res);
+        } catch (err) {
+          console.log(err);
+        }
+      },
     },
     async created() {
       this.getArtists();
+    },
+    async updated() {
+      this.searchArtists();
     },
   };
 </script>
@@ -59,5 +79,12 @@
     width: 70px;
     height: 70px;
     margin: 5px;
+  }
+  .search input {
+    width: 90%;
+    height: 40px;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 17px;
   }
 </style>
