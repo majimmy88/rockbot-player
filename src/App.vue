@@ -2,7 +2,7 @@
   <div class="main-container">
     <Header />
     <div class="page-container">
-      <NowPlaying />
+      <router-view></router-view>
     </div>
     <NavBar />
   </div>
@@ -12,14 +12,14 @@
   import { defineComponent } from 'vue';
   import Header from './components/Header.vue';
   import NavBar from './components/NavBar.vue';
-  import NowPlaying from './components/NowPlaying.vue';
+  // import NowPlaying from './components/NowPlaying.vue';
 
   export default defineComponent({
     name: 'App',
     components: {
       Header,
       NavBar,
-      NowPlaying,
+      // NowPlaying,
     },
   });
 </script>

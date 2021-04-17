@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
-    <a href="#">Now Playing</a>
-    <a href="#">Request</a>
+    <a href="/">Now Playing</a>
+    <a href="/search">Request</a>
   </div>
 </template>
 
