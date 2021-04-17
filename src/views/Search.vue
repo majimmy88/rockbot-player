@@ -13,6 +13,17 @@
     </div>
     <div class="search">
       <input type="text" v-model="query" placeholder="Search Artists" />
+      <button v-on:click="searchArtists">Search</button>
+    </div>
+    <div
+      class="song"
+      v-for="song in searchResults"
+      v-bind:item="song"
+      v-bind:key="song.pick_id"
+    >
+      <div class="artist-info">
+        <div class="artist">{{ song.artist }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +37,7 @@
       return {
         artists: [],
         query: '',
+        searchResults: [],
       };
     },
 
@@ -49,7 +61,7 @@
         };
         try {
           const res = await ArtistService.searchArtists(data);
-          console.log(res);
+          this.searchResults = res;
         } catch (err) {
           console.log(err);
         }
@@ -58,9 +70,7 @@
     async created() {
       this.getArtists();
     },
-    async updated() {
-      this.searchArtists();
-    },
+    // async updated() {},
   };
 </script>
 
@@ -86,5 +96,16 @@
     margin: 5px;
     padding: 3px 7px;
     font-size: 17px;
+  }
+  .artist-info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-left: 10px;
+  }
+
+  .artist {
+    font-weight: 900;
+    font-size: 14px;
   }
 </style>
