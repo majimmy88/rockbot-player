@@ -7,7 +7,7 @@
         <div class="song-name">{{ nowPlaying.song }}</div>
       </div>
     </div>
-    <h4><u>Coming Up</u></h4>
+    <h3><u>Coming Up</u></h3>
     <div class="queue-container">
       <div
         class="song"

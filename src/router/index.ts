@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import NowPlaying from '../components/NowPlaying.vue';
-import Search from '../components/Search.vue';
+import NowPlaying from '../views/NowPlaying.vue';
+import Search from '../views/Search.vue';
 
 const routes = [
   {
