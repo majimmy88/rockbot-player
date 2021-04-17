@@ -9,7 +9,10 @@ app.use(express.urlencoded({ extended: false }));
 
 const songs = require('./routes/api/songs');
 
+const artists = require('./routes/api/artists');
+
 app.use('/api/songs', songs);
+app.use('/api/artists', artists);
 
 const port = 5000;
 
