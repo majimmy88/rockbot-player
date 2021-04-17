@@ -104,9 +104,22 @@
   }
   img {
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 50%;
     width: 70px;
     height: 70px;
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
+  }
+  .now-playing.play .img-container img {
+    animation-play-state: running;
+  }
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
   .artist-info {
     display: flex;
