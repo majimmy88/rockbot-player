@@ -11,7 +11,6 @@
     props: {
       title: {
         type: String,
-        default: 'Hello World',
       },
     },
   };
@@ -22,7 +21,7 @@
     width: 100%;
     height: 30px;
     border: 1px solid black;
-    overflow: hidden;
+    background-color: #fff;
     display: flex;
     justify-content: space-around;
     /* align-content: center; */

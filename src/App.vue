@@ -1,9 +1,7 @@
 <template>
   <div class="main-container">
     <Header />
-    <div class="page-container">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
     <NavBar />
   </div>
 </template>
@@ -36,12 +34,10 @@
   }
   .main-container {
     min-width: 320px;
-  }
-  .page-container {
-    overflow: auto;
     display: flex;
     flex-direction: column;
   }
+
   /* .btn {
     display: inline-block;
     background: #000;

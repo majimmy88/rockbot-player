@@ -17,5 +17,7 @@
     background-color: #33639e;
     color: #fff;
     width: 100%;
+    position: fixed;
+    min-height: 60px;
   }
 </style>

@@ -7,8 +7,9 @@
         <div class="song-name">{{ nowPlaying.song }}</div>
       </div>
     </div>
-    <h3><u>Coming Up</u></h3>
+
     <div class="queue-container">
+      <h3><u>Coming Up</u></h3>
       <div
         class="song"
         v-for="song in queue"
@@ -95,12 +96,16 @@
 <style scoped>
   .container {
     padding: 10px;
+    margin-top: 50px;
   }
   .now-playing {
     display: flex;
     flex-direction: row;
-    height: auto;
-    margin-bottom: 10px;
+    height: 100px;
+    background-color: #fff;
+    width: 100%;
+    align-items: center;
+    position: fixed;
   }
   img {
     border: 1px solid black;
@@ -142,6 +147,11 @@
   .song-name {
     font-weight: 300;
     font-size: 17px;
+  }
+  .queue-container {
+    margin-top: 110px;
+    overflow: scroll;
+    margin-bottom: 40px;
   }
   .voting-container {
     display: flex;
