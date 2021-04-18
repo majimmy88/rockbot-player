@@ -4,25 +4,28 @@
     <div class="artist-photo-container">
       <div
         class="artist"
-        v-for="artist in artists"
-        v-bind:item="artist"
-        v-bind:key="artist.artist_id"
+        v-for="topArtist in topArtists"
+        v-bind:item="topArtist"
+        v-bind:key="topArtist.artist_id"
       >
-        <img v-bind:src="artist.artwork_small" alt="artwork small" />
+        <img v-bind:src="topArtist.artwork_small" alt="artwork small" />
       </div>
     </div>
     <div class="search">
       <input type="text" v-model="query" placeholder="Search Artists" />
-      <button v-on:click="searchArtists">Search</button>
+      <button v-on:click="searchArtists()">Search</button>
     </div>
-    <div
-      class="song"
-      v-for="song in searchResults"
-      v-bind:item="song"
-      v-bind:key="song.pick_id"
-    >
-      <div class="artist-info">
-        <div class="artist">{{ song.artist }}</div>
+    <div class="artists-container">
+      <div
+        class="artist-info"
+        v-for="artist in searchResults"
+        v-bind:item="artist"
+        v-bind:key="artist.pick_id"
+      >
+        <button v-on:click="addToQueue(artist.artist_id)">
+          <img v-bind:src="artist.artwork_small" alt="artwork small" />
+          <div class="artist-name">{{ artist.artist }}</div>
+        </button>
       </div>
     </div>
   </div>
@@ -35,7 +38,7 @@
     name: 'Search',
     data() {
       return {
-        artists: [],
+        topArtists: [],
         query: '',
         searchResults: [],
       };
@@ -47,7 +50,7 @@
         try {
           const res = await ArtistService.getArtists();
           console.log(res);
-          this.artists = res;
+          this.topArtists = res;
         } catch (err) {
           console.log(err);
         }
@@ -61,7 +64,16 @@
         };
         try {
           const res = await ArtistService.searchArtists(data);
+          console.log(res);
           this.searchResults = res;
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      async addToQueue(id) {
+        //Adds artist to queue
+        try {
+          await ArtistService.addToQueue(id);
         } catch (err) {
           console.log(err);
         }
@@ -77,6 +89,7 @@
 <style scoped>
   .container {
     padding: 10px;
+    margin-top: 50px;
   }
   .artist-photo-container {
     display: flex;
@@ -91,20 +104,39 @@
     margin: 5px;
   }
   .search input {
-    width: 90%;
+    width: 70%;
     height: 40px;
     margin: 5px;
     padding: 3px 7px;
     font-size: 17px;
   }
+
+  .search button {
+    width: 20%;
+    height: 40px;
+    border: none;
+  }
+  .artists-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
   .artist-info {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    margin-left: 10px;
+    align-self: flex-start;
+    width: 33%;
+    margin-bottom: 10px;
+  }
+  .artist-info button {
+    background-color: #fff;
+    border: none;
   }
 
-  .artist {
+  .artist-name {
     font-weight: 900;
     font-size: 14px;
   }
