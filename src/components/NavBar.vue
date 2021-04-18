@@ -19,12 +19,12 @@
 <style scoped>
   .navbar {
     width: 100%;
-    height: 30px;
+    height: 40px;
     border: 1px solid black;
     background-color: #fff;
     display: flex;
     justify-content: space-around;
-    /* align-content: center; */
+    align-items: center;
     margin-top: 200px;
     position: fixed;
     bottom: 0px;
