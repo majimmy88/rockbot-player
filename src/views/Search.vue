@@ -8,7 +8,10 @@
         v-bind:item="topArtist"
         v-bind:key="topArtist.artist_id"
       >
-        <img v-bind:src="topArtist.artwork_small" alt="artwork small" />
+        <button v-on:click="addToQueue(topArtist.artist_id)">
+          <img v-bind:src="topArtist.artwork_small" alt="artwork small" />
+          <div class="artist-name">{{ topArtist.artist }}</div>
+        </button>
       </div>
     </div>
     <div class="search">
@@ -94,7 +97,11 @@
   .artist-photo-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+  }
+  .artist button {
+    background-color: #fff;
+    border: none;
   }
 
   img {
@@ -102,6 +109,10 @@
     width: 70px;
     height: 70px;
     margin: 5px;
+  }
+  .search {
+    display: flex;
+    align-items: center;
   }
   .search input {
     width: 70%;
@@ -114,7 +125,13 @@
   .search button {
     width: 20%;
     height: 40px;
-    border: none;
+    border-color: #4b93eb;
+    border-width: 1px;
+    color: #4b93eb;
+    background-color: #fff;
+    border-radius: 2px;
+    outline: none;
+    text-align: center;
   }
   .artists-container {
     display: flex;
