@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+require('dotenv').config();
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ const requestUrl = 'https://api.rockbot.com/v3/engage/request_artist';
 router.get('/', async (req, res) => {
   await axios
     .get(topArtistsUrl, {
-      headers: { Authorization: '2ab742c917f872aa88644bc8f995e03159b2' },
+      headers: { Authorization: process.env.RB_API },
     })
     .then((response) => {
       res.json(response.data);
@@ -25,7 +26,7 @@ router.get('/search', async (req, res) => {
   console.log(req.query);
   await axios
     .get(searchUrl, {
-      headers: { Authorization: '2ab742c917f872aa88644bc8f995e03159b2' },
+      headers: { Authorization: process.env.RB_API },
       params: req.query,
     })
     .then((response) => {
@@ -40,7 +41,7 @@ router.post('/:id', async (req, res) => {
   console.log(id);
   await axios
     .post(requestUrl, `artist_id=${id}`, {
-      headers: { Authorization: '2ab742c917f872aa88644bc8f995e03159b2' },
+      headers: { Authorization: process.env.RB_API },
     })
     .then((response) => {
       console.log(response.data);
