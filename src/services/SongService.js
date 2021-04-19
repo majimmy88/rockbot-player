@@ -10,6 +10,7 @@ class SongService {
         .get(url)
         .then((res) => {
           const data = res.data.response;
+          console.log(data);
           resolve(data);
         })
         .catch((err) => {
@@ -23,8 +24,10 @@ class SongService {
     return new Promise((resolve, reject) => {
       axios
         .post(url + id, data)
-        .then(() => {
-          console.log(`Data is sent to express`);
+        .then((res) => {
+          const data = res.data.response;
+          console.log(data);
+          resolve(data);
         })
         .catch((err) => {
           console.log(err);

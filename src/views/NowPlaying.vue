@@ -52,9 +52,7 @@
         try {
           const res = await SongService.getSongs();
           this.nowPlaying = res.now_playing;
-          // console.log(this.nowPlaying.song);
           this.queue = res.queue;
-          // console.log(this.queue);
         } catch (err) {
           console.log(err);
         }
@@ -70,9 +68,10 @@
         const data = {
           direction: direction,
         };
-
         try {
-          await SongService.vote(id, data);
+          const res = await SongService.vote(id, data);
+          this.nowPlaying = res.now_playing;
+          this.queue = res.queue;
         } catch (err) {
           console.log(err);
         }
@@ -86,8 +85,9 @@
         this.getSongs();
       }, 30000);
     },
+
     unmounted() {
-      //Clears setInterval when component is unmounted
+      // Clears setInterval when component is unmounted
       this.cancelAutoUpdate();
     },
   };
