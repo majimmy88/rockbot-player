@@ -1,10 +1,20 @@
 <template>
   <div class="container">
-    <div class="now-playing">
-      <img v-bind:src="nowPlaying.artwork_small" alt="artwork small" />
-      <div class="artist-info">
-        <div class="artist">{{ nowPlaying.artist }}</div>
-        <div class="song-name">{{ nowPlaying.song }}</div>
+    <div class="np-play-container" id="np-play-container">
+      <div class="now-playing">
+        <img v-bind:src="nowPlaying.artwork_small" alt="artwork small" />
+        <div class="artist-info">
+          <div class="artist">{{ nowPlaying.artist }}</div>
+          <div class="song-name">{{ nowPlaying.song }}</div>
+        </div>
+      </div>
+      <div class="play">
+        <button v-if="paused" @click="playSong()">
+          <font-awesome-icon icon="play" />
+        </button>
+        <button v-if="!paused" @click="playSong()">
+          <font-awesome-icon icon="pause" />
+        </button>
       </div>
     </div>
 
@@ -43,6 +53,7 @@
       return {
         nowPlaying: [],
         queue: [],
+        paused: true,
       };
     },
 
@@ -60,6 +71,16 @@
 
       cancelAutoUpdate() {
         clearInterval(this.timer);
+      },
+      playSong() {
+        console.log('play');
+        if (this.paused === true) {
+          this.paused = false;
+          document.getElementById('np-play-container').classList.add('play');
+        } else {
+          this.paused = true;
+          document.getElementById('np-play-container').classList.remove('play');
+        }
       },
 
       async vote(id, direction) {
@@ -98,16 +119,20 @@
     padding: 10px;
     margin-top: 50px;
   }
-  .now-playing {
+  .np-play-container {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     height: 100px;
     background-color: #fff;
     width: 100%;
     align-items: center;
     position: fixed;
   }
-  img {
+  .now-playing {
+    display: flex;
+    flex-direction: row;
+  }
+  .now-playing img {
     border: 1px solid black;
     border-radius: 50%;
     width: 70px;
@@ -115,9 +140,22 @@
     animation: rotate 3s linear infinite;
     animation-play-state: paused;
   }
-  .now-playing.play .img-container img {
+
+  .np-play-container.play .now-playing img {
     animation-play-state: running;
   }
+
+  .play button {
+    display: flex;
+    background-color: #fff;
+    border: 0;
+    color: #dfdbdf;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+  }
+
   @keyframes rotate {
     from {
       transform: rotate(0deg);
