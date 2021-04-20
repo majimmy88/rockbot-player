@@ -149,7 +149,7 @@
     padding: 5px;
     justify-content: center;
     width: 100%;
-    margin-bottom: 35px;
+    padding-bottom: 50px;
   }
   .artist-info {
     display: flex;
