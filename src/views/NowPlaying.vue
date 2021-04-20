@@ -33,7 +33,7 @@
           <button @click="vote(song.pick_id, 'up')" class="btn">
             <font-awesome-icon icon="thumbs-up" />
           </button>
-          {{ song.likes }}
+          {{ song.likes - song.dislikes }}
           <button @click="vote(song.pick_id, 'down')" class="btn">
             <font-awesome-icon icon="thumbs-down" />
           </button>
