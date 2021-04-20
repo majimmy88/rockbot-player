@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/artists/';
+const url = 'http://localhost:8000/api/artists/';
 
 //Gets top artists from server
 class ArtistService {
