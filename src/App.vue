@@ -2,7 +2,9 @@
   <div class="main-container">
     <Header />
     <router-view v-slot="{ Component }">
+      <!-- Animation when navigating between pages -->
       <transition name="scale" mode="out-in">
+        <!-- Utilizing keep-alive to boost performance by caching page and maintaining data from api request-->
         <keep-alive>
           <component :is="Component" :key="$route.fullPath" />
         </keep-alive>

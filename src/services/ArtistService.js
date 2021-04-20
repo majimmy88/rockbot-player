@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const url = 'http://localhost:5000/api/artists/';
 
+//Gets top artists from server
 class ArtistService {
-  //Gets top artists from server
   static getArtists() {
     return new Promise((resolve, reject) => {
       axios
@@ -18,8 +18,9 @@ class ArtistService {
     });
   }
 
+  //Searches for artists based on search query and returns first 9 results
   static searchArtists(query) {
-    console.log(query);
+    // console.log(query);
     return new Promise((resolve, reject) => {
       axios
         .get(url + 'search', { params: query })
@@ -33,6 +34,7 @@ class ArtistService {
     });
   }
 
+  //Adds song based on artist ID to queue
   static addToQueue(id) {
     console.log(id);
     return new Promise((resolve, reject) => {

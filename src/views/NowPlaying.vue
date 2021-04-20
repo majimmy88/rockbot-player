@@ -17,7 +17,6 @@
         </button>
       </div>
     </div>
-
     <div class="queue-container">
       <h3><u>Coming Up</u></h3>
       <div
@@ -58,8 +57,8 @@
     },
 
     methods: {
+      //Gets now playing and queue from rockbot api
       async getSongs() {
-        //Gets now playing and queue from rockbot api
         try {
           const res = await SongService.getSongs();
           this.nowPlaying = res.now_playing;
@@ -69,11 +68,14 @@
         }
       },
 
+      //Cancels set interval for receiving song data
       cancelAutoUpdate() {
         clearInterval(this.timer);
       },
+
+      //Pressing playing will start rotating animation for album artwork and replace play icon with a pause icon
       playSong() {
-        console.log('play');
+        // console.log('play');
         if (this.paused === true) {
           this.paused = false;
           document.getElementById('np-play-container').classList.add('play');
@@ -82,10 +84,11 @@
           document.getElementById('np-play-container').classList.remove('play');
         }
       },
-
+      // Sends voting information to server
+      // vote works for both up and down
+      // API only allows one vote for up or down
+      // Sends back updated queue data
       async vote(id, direction) {
-        //Voting for both up and down
-        //API only allows one vote for up or down
         const data = {
           direction: direction,
         };
@@ -100,6 +103,7 @@
     },
 
     async created() {
+      //when component is created, app will get songs from server
       await this.getSongs();
       setInterval(() => {
         //Gets song data every 30 seconds

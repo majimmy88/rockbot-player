@@ -51,8 +51,8 @@
     },
 
     methods: {
+      //Gets to top artists from server
       async getArtists() {
-        //Gets to artists from artistservice
         try {
           const res = await ArtistService.getArtists();
           console.log(res);
@@ -62,8 +62,8 @@
         }
       },
 
+      //Searchs artists based on search input and renders on client
       async searchArtists() {
-        //Searchs artists based on search input
         // console.log(this.query);
         const data = {
           query: this.query,
@@ -76,6 +76,7 @@
           console.log(err);
         }
       },
+      //Adds song to queye on Now Playing page
       async addToQueue(id) {
         //Adds artist to queue
         try {
@@ -86,9 +87,9 @@
       },
     },
     async created() {
+      //gets top artists when component is created
       this.getArtists();
     },
-    // async updated() {},
   };
 </script>
 

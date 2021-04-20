@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NowPlaying from '../views/NowPlaying.vue';
 import Search from '../views/Search.vue';
 
+//Routes for NowPlaying and Search pages
+
 const routes = [
   {
     path: '/',

@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+//API KEYS HIDDEN IN ENV FILE
 require('dotenv').config();
 
 const router = express.Router();
@@ -10,7 +11,7 @@ const searchUrl = 'https://api.rockbot.com/v3/engage/search_artists';
 
 const requestUrl = 'https://api.rockbot.com/v3/engage/request_artist';
 
-//Get artists
+//Gets top 10 artists
 router.get('/', async (req, res) => {
   await axios
     .get(topArtistsUrl, {
@@ -23,6 +24,7 @@ router.get('/', async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//Searches for artists based on search query and returns first 9 results
 router.get('/search', async (req, res) => {
   console.log(req.query);
   await axios
@@ -37,6 +39,7 @@ router.get('/search', async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//Adds song based on artist ID to queue
 router.post('/:id', async (req, res) => {
   const id = req.params.id;
   console.log(id);

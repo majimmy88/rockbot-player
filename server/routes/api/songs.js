@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+//API KEYS HIDDEN IN ENV FILE
 require('dotenv').config();
 
 const router = express.Router();
@@ -18,10 +19,9 @@ router.get('/', async (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-// Update songs
 
+//Posts either up or down vote for song based on ID and then sends updated song queue to client
 router.post('/:id', async (req, res) => {
-  //update votes
   const id = req.params.id;
   // console.log(id);
   const direction = req.body.direction;
