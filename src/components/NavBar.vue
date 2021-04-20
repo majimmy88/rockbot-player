@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
-    <a href="/">Now Playing</a>
-    <a href="/search">Request</a>
+    <router-link class="nav-link" to="/">Now Playing</router-link>
+    <router-link class="nav-link" to="/search">Request</router-link>
   </div>
 </template>
 
@@ -29,7 +29,7 @@
     position: fixed;
     bottom: 0px;
   }
-  a {
+  .nav-link {
     color: #4b93eb;
     text-decoration: none;
   }

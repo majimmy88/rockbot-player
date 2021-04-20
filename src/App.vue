@@ -1,7 +1,13 @@
 <template>
   <div class="main-container">
     <Header />
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <transition name="scale" mode="out-in">
+        <keep-alive>
+          <component :is="Component" :key="$route.fullPath" />
+        </keep-alive>
+      </transition>
+    </router-view>
     <NavBar />
   </div>
 </template>
@@ -10,14 +16,14 @@
   import { defineComponent } from 'vue';
   import Header from './components/Header.vue';
   import NavBar from './components/NavBar.vue';
-  // import NowPlaying from './components/NowPlaying.vue';
+  import Search from './views/Search.vue';
 
   export default defineComponent({
     name: 'App',
     components: {
       Header,
       NavBar,
-      // NowPlaying,
+      Search,
     },
   });
 </script>
@@ -36,5 +42,14 @@
     min-width: 320px;
     display: flex;
     flex-direction: column;
+  }
+  .scale-enter-active,
+  .scale-leave-active {
+    transition: all 0.5s ease;
+  }
+  .scale-enter-from,
+  .scale-leave-to {
+    opacity: 0;
+    transform: scale(0.9);
   }
 </style>
