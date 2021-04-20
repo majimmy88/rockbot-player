@@ -9,7 +9,7 @@ class ArtistService {
       axios
         .get(url)
         .then((res) => {
-          const data = res.data.response.slice(0, 10);
+          const data = res.data;
           resolve(data);
         })
         .catch((err) => {
@@ -24,7 +24,7 @@ class ArtistService {
       axios
         .get(url + 'search', { params: query })
         .then((res) => {
-          const data = res.data.response.slice(0, 9);
+          const data = res.data;
           resolve(data);
         })
         .catch((err) => {

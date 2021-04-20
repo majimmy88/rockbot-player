@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
       headers: { Authorization: process.env.RB_API },
     })
     .then((response) => {
-      res.json(response.data);
+      const data = response.data.response.slice(0, 10);
+      res.json(data);
     })
     .catch((err) => console.log(err));
 });
@@ -30,8 +31,8 @@ router.get('/search', async (req, res) => {
       params: req.query,
     })
     .then((response) => {
-      console.log(response.data);
-      res.json(response.data);
+      const data = response.data.response.slice(0, 9);
+      res.json(data);
     })
     .catch((err) => console.log(err));
 });
