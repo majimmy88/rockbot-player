@@ -6,7 +6,9 @@
 npm install
 ```
 
-### Starts Express Server
+### Starts Express Server on port 8000
+
+To have access to API requests, please provide your own API key in a .env file based on .env_SAMPLE
 
 ```
 npm run server
