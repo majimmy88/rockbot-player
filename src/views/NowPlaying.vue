@@ -118,13 +118,15 @@
   .container {
     padding: 10px;
     margin-top: 50px;
+    height: 100vh;
   }
   .np-play-container {
     display: flex;
     justify-content: space-between;
     height: 100px;
     background-color: #fff;
-    width: 100%;
+    width: 100vw;
+    max-width: 680px;
     align-items: center;
     position: fixed;
     margin-top: 1px;

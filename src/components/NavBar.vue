@@ -18,14 +18,15 @@
 
 <style scoped>
   .navbar {
-    width: 100%;
+    max-width: 700px;
+    width: 100vw;
     height: 40px;
     border: 1px solid black;
     background-color: #fff;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 200px;
+    /* margin-top: 200px; */
     position: fixed;
     bottom: 0px;
   }

@@ -37,11 +37,18 @@
   }
   body {
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
   }
   .main-container {
     min-width: 320px;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100vw;
+    max-width: 700px;
+    border: 1px solid black;
+    border-bottom: 0;
   }
   .scale-enter-active,
   .scale-leave-active {

@@ -9,7 +9,7 @@ class ArtistService {
       axios
         .get(url)
         .then((res) => {
-          const data = res.data.response.slice(0, 3);
+          const data = res.data.response.slice(0, 10);
           resolve(data);
         })
         .catch((err) => {

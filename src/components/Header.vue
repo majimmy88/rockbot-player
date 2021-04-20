@@ -16,7 +16,8 @@
     justify-content: center;
     background-color: #33639e;
     color: #fff;
-    width: 100%;
+    max-width: 700px;
+    width: 100vw;
     position: fixed;
     min-height: 60px;
   }

@@ -19,6 +19,9 @@
       <button v-on:click="searchArtists()">Search</button>
     </div>
     <div class="artists-container">
+      <div v-if="searchResults.length === 0">
+        Search Artists to add to queue
+      </div>
       <div
         class="artist-info"
         v-for="artist in searchResults"
@@ -93,11 +96,17 @@
   .container {
     padding: 10px;
     margin-top: 50px;
+    height: 100vh;
   }
   .artist-photo-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
   }
   .artist button {
     background-color: #fff;
@@ -139,7 +148,7 @@
     padding: 5px;
     justify-content: center;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 35px;
   }
   .artist-info {
     display: flex;
