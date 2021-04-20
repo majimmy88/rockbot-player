@@ -127,6 +127,7 @@
     width: 100%;
     align-items: center;
     position: fixed;
+    margin-top: 1px;
   }
   .now-playing {
     display: flex;
@@ -185,6 +186,11 @@
   .song-name {
     font-weight: 300;
     font-size: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
   .queue-container {
     margin-top: 110px;
