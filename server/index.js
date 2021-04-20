@@ -14,6 +14,6 @@ const artists = require('./routes/api/artists');
 app.use('/api/songs', songs);
 app.use('/api/artists', artists);
 
-const port = 5000;
+const port = 8000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
