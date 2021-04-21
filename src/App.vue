@@ -49,6 +49,8 @@
     max-width: 700px;
     border: 1px solid black;
     border-bottom: 0;
+    overflow-y: auto;
+    margin-bottom: 15x;
   }
   .scale-enter-active,
   .scale-leave-active {

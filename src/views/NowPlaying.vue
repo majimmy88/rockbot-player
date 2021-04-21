@@ -196,7 +196,8 @@
   .queue-container {
     margin-top: 110px;
     overflow: scroll;
-    margin-bottom: 40px;
+    padding-bottom: 50px;
+    overflow-y: auto;
   }
   .voting-container {
     display: flex;
