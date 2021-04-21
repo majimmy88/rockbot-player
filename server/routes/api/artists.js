@@ -65,7 +65,7 @@ router.get('/browse', async (req, res) => {
       params: letter,
     })
     .then((response) => {
-      const data = response.data.response.slice(0, 21);
+      const data = response.data.response;
       res.json(data);
     })
     .catch((err) => console.log(err));
