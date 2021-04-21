@@ -5,7 +5,6 @@
       <div
         class="artist"
         v-for="topArtist in topArtists"
-        v-bind:item="topArtist"
         v-bind:key="topArtist.artist_id"
       >
         <button v-on:click="addToQueue(topArtist.artist_id)">
@@ -25,7 +24,6 @@
       <div
         class="artist-info"
         v-for="artist in searchResults"
-        v-bind:item="artist"
         v-bind:key="artist.pick_id"
       >
         <button v-on:click="addToQueue(artist.artist_id)">

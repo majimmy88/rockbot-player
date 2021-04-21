@@ -19,12 +19,7 @@
     </div>
     <div class="queue-container">
       <h3><u>Coming Up</u></h3>
-      <div
-        class="song"
-        v-for="song in queue"
-        v-bind:item="song"
-        v-bind:key="song.pick_id"
-      >
+      <div class="song" v-for="song in queue" v-bind:key="song.pick_id">
         <div class="artist-info">
           <div class="artist">{{ song.artist }}</div>
           <div class="song-name">{{ song.song }}</div>

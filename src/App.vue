@@ -18,14 +18,12 @@
   import { defineComponent } from 'vue';
   import Header from './components/Header.vue';
   import NavBar from './components/NavBar.vue';
-  import Search from './views/Search.vue';
 
   export default defineComponent({
     name: 'App',
     components: {
       Header,
       NavBar,
-      Search,
     },
   });
 </script>
