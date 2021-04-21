@@ -11,6 +11,8 @@ const searchUrl = 'https://api.rockbot.com/v3/engage/search_artists';
 
 const requestUrl = 'https://api.rockbot.com/v3/engage/request_artist';
 
+const browseUrl = `https://api.rockbot.com/v3/engage/browse_artists`;
+
 //Gets top 10 artists
 router.get('/', async (req, res) => {
   await axios
@@ -50,6 +52,21 @@ router.post('/:id', async (req, res) => {
     .then((response) => {
       console.log(response.data);
       res.json(response.data);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.get('/browse', async (req, res) => {
+  const letter = req.query;
+  console.log(letter);
+  await axios
+    .get(browseUrl, {
+      headers: { Authorization: process.env.RB_API },
+      params: letter,
+    })
+    .then((response) => {
+      const data = response.data.response.slice(0, 21);
+      res.json(data);
     })
     .catch((err) => console.log(err));
 });

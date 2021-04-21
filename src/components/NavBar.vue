@@ -2,6 +2,7 @@
   <div class="navbar">
     <router-link class="nav-link" to="/">Now Playing</router-link>
     <router-link class="nav-link" to="/search">Request</router-link>
+    <router-link class="nav-link" to="/browse">Browse</router-link>
   </div>
 </template>
 

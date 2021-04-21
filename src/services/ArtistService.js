@@ -48,6 +48,21 @@ class ArtistService {
         });
     });
   }
+
+  static browseArtists(data) {
+    // console.log(data);
+    return new Promise((resolve, reject) => {
+      axios
+        .get(url + 'browse', { params: data })
+        .then((res) => {
+          const data = res.data;
+          resolve(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  }
 }
 
 export default ArtistService;
