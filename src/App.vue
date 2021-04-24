@@ -5,7 +5,7 @@
       <!-- Animation when navigating between pages -->
       <transition name="scale" mode="out-in">
         <!-- Utilizing keep-alive to boost performance by caching page and maintaining data from api request-->
-        <keep-alive>
+        <keep-alive exclude="NowPlaying">
           <component :is="Component" :key="$route.fullPath" />
         </keep-alive>
       </transition>
