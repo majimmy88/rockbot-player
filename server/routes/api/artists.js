@@ -56,6 +56,7 @@ router.post('/:id', async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//Browses for songs based on first letter
 router.get('/browse', async (req, res) => {
   const letter = req.query;
   console.log(letter);
@@ -65,7 +66,8 @@ router.get('/browse', async (req, res) => {
       params: letter,
     })
     .then((response) => {
-      const data = response.data.response;
+      const data = response.data.response.slice(0, 300);
+      console.log(data.length);
       res.json(data);
     })
     .catch((err) => console.log(err));
