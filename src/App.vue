@@ -6,7 +6,7 @@
       <transition name="scale" mode="out-in">
         <!-- Utilizing keep-alive to boost performance by caching page and maintaining data from api request-->
         <keep-alive exclude="NowPlaying">
-          <component :is="Component" :key="$route.fullPath" />
+          <component :is="Component" />
         </keep-alive>
       </transition>
     </router-view>
