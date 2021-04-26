@@ -93,9 +93,9 @@
 
 <style scoped>
   .container {
-    padding: 10px;
-    margin-top: 50px;
-    height: 100vh;
+    padding: 0 10px;
+    margin-top: 60px;
+    min-height: calc(100vh - 60px - 39px);
   }
   .artist-photo-container {
     display: flex;

@@ -43,9 +43,11 @@
             };
             const res = await ArtistService.browseArtists(data);
             this.artistsList = res;
+            console.log(this.artistsList.length);
           } else {
             const res = await ArtistService.browseArtists();
             this.artistsList = res;
+            console.log(this.artistsList.length);
           }
         } catch (err) {
           console.log(err);
@@ -70,9 +72,9 @@
 
 <style scoped>
   .container {
-    padding: 10px;
-    margin-top: 50px;
-    height: 100vh;
+    padding: 0 10px;
+    margin-top: 60px;
+    min-height: calc(100vh - 60px - 39px);
   }
   .scroll-bar {
     display: flex;
